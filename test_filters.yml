@@ -1,0 +1,24 @@
+name: Filter test #include exlude patterns
+
+run-name: "Aish filter attributes test runs"
+
+on: 
+  Push:
+    branches:
+      -main
+      -test-branch 
+
+    paths:
+      -'src/**'
+      -'!src/docs/**'
+
+jobs:
+  check-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      -name: Print debug info 
+       run: |
+           echo "Workflow triggered!"
+           echo "Branch: ${{ github.ref }}"
+           echo "Event: ${{ github.event_name }}"
+      
